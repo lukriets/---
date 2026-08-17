@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phantom Dice — Persona 5 Royale</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="hero__tag">Phantom Dice</p>
+      <h1>Броски кубиков в стиле Persona 5 Royal</h1>
+      <p class="hero__subtitle">Стильный, быстрый и гибкий роллер для настольных ролевых игр.</p>
+      <div class="hero__actions">
+        <button class="btn btn--primary" id="roll-now">ROLL NOW</button>
+        <button class="btn btn--ghost" id="clear-history">Очистить историю</button>
+      </div>
+    </div>
+    <div class="hero__badge">TOTAL</div>
+  </header>
+
+  <main class="layout">
+    <section class="panel panel--controls">
+      <h2>Настройка броска</h2>
+      <div class="control-grid">
+        <label class="control">
+          <span>Количество кубиков</span>
+          <input type="number" id="dice-count" min="1" max="50" value="1" />
+        </label>
+        <label class="control">
+          <span>Тип кубика</span>
+          <select id="dice-type">
+            <option value="4">d4</option>
+            <option value="6" selected>d6</option>
+            <option value="8">d8</option>
+            <option value="10">d10</option>
+            <option value="12">d12</option>
+            <option value="20">d20</option>
+            <option value="100">d100</option>
+          </select>
+        </label>
+        <label class="control">
+          <span>Модификатор</span>
+          <input type="number" id="modifier" min="-50" max="50" value="0" />
+        </label>
+        <label class="control">
+          <span>Режим</span>
+          <select id="roll-mode">
+            <option value="normal" selected>Обычный</option>
+            <option value="advantage">Преимущество (2d20)</option>
+            <option value="disadvantage">Помеха (2d20)</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="extras">
+        <label class="checkbox">
+          <input type="checkbox" id="explode" />
+          <span>Взрывные значения (максимум)</span>
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" id="drop-low" />
+          <span>Сбросить минимальный</span>
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" id="drop-high" />
+          <span>Сбросить максимальный</span>
+        </label>
+      </div>
+
+      <div class="quick">
+        <button class="chip" data-preset="1d20">1d20</button>
+        <button class="chip" data-preset="2d20">2d20</button>
+        <button class="chip" data-preset="4d6k3">4d6 drop low</button>
+        <button class="chip" data-preset="1d100">1d100</button>
+        <button class="chip" data-preset="3d6+2">3d6 +2</button>
+      </div>
+    </section>
+
+    <section class="panel panel--result">
+      <h2>Результат</h2>
+      <div class="result">
+        <div class="result__total" id="result-total">0</div>
+        <div class="result__details" id="result-details">Готов к броску.</div>
+      </div>
+      <div class="dice-showcase" id="dice-showcase"></div>
+    </section>
+
+    <section class="panel panel--history">
+      <h2>История</h2>
+      <ul class="history" id="history"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">Создано для настольных приключений. Сила сердца в каждом броске.</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
